@@ -274,7 +274,15 @@ a.keyword {
   margin-top: 10px;
   font-size: 80%;
   a {
-    color: #999999;
+    text-decoration: none;
+    border: solid 1px #766;
+    @include border-radius(3px);
+    background-color: #DDD;
+    color: #766;
+    padding: 1px 2px;
+    &:hover {
+      background-color: #EEE;
+    }
   }
   &.no-categories {
     margin: 0;
@@ -346,19 +354,30 @@ a.keyword {
     line-height: 1.5;
   }
   h1 {
-    font-size: 160%;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    margin: 64px 0px 16px -12px;
+    border-left: 4px solid rgb(68, 119, 102);
+    padding-left: 8px;
+    font-size: 120%;
   }
   h2 {
-    font-size: 150%;
+    font-weight: bold;
+    margin: 24px 0px 16px -8px;
+    border-left: 4px solid rgb(153, 187, 170);
+    padding-left: 8px;
+    font-size: 110%;
   }
   h3 {
-    font-size: 140%;
+    font-weight: bold;
+    font-size: 110%;
   }
   h4 {
-    font-size: 130%;
+    font-weight: bold;
+    font-size: 100%;
   }
   h5 {
-    font-size: 110%;
+    font-size: 100%;
   }
   h6 {
     font-size: 100%;
@@ -409,6 +428,24 @@ a.keyword {
     background-color: #f8f8f8;
     border-radius: 3px;
     font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+  }
+  pre.code {
+    line-height: 1.1em;
+    overflow-x: auto;
+    overflow-y: hidden;
+    @include border-radius(5px);
+    padding: 2px 20px;
+    font-size: 14px;
+    background-color: rgb(27, 36, 38);
+    color: rgb(185, 189, 182);
+    font-family: 'Monaco', 'Consolas', 'Courier New', Courier, monospace, sans-serif;
+    .synSpecial    { color: rgb(185, 189, 182); }
+    .synType       { color: rgb(91, 161, 207); }
+    .synComment    { color: rgb(67, 90, 95); }
+    .synPreProc    { color: rgb(91, 161, 207); }
+    .synIdentifier { color: rgb(91, 161, 207); }
+    .synConstant   { color: rgb(92, 230, 56); }
+    .synStatement  { color: rgb(91, 161, 207); }
   }
   ul, ol {
     list-style: square outside none;
