@@ -1,26 +1,48 @@
 <header id="manaHeader">
-	<div class="wrapper" class="clearfix">
-		<div id="logo">
-			<a href="/">manadot</a>
-		</div>
-		<div id="menu">
-			<ul>
-				<li><a class="top" title="トップページ" href="http://manaten.net">トップページ</a></li>
-				<li><a class="blog" title="ブログ" href="http://blog.manaten.net">ブログ</a></li>
-				<li><a class="gallery" title="ギャラリー" href="http://manaten.net/gallery">ギャラリー</a></li>
-				<li><a class="bbs" title="ドット絵掲示板" href="http://dot.manaten.net">ドット絵掲示板</a></li>
-				<li><a class="twitter" title="Twitter" href="http://twitter.com/manaten">Twitter</a></li>
-			</ul>
-		</div>
+  <div class="wrapper" class="clearfix">
+    <div id="logo">
+      <a href="/">manadot</a>
+    </div>
+    <div id="menu">
+      <ul>
+        <li><a class="top" title="トップページ" href="http://manaten.net">トップページ</a></li>
+        <li><a class="blog" title="ブログ" href="http://blog.manaten.net">ブログ</a></li>
+        <li><a class="gallery" title="ギャラリー" href="http://manaten.net/gallery">ギャラリー</a></li>
+        <li><a class="bbs" title="ドット絵掲示板" href="http://dot.manaten.net">ドット絵掲示板</a></li>
+        <li><a class="twitter" title="Twitter" href="http://twitter.com/manaten">Twitter</a></li>
+      </ul>
+    </div>
 
-		<a class="rss" title="rss" href="http://manaten.net/feed">RSS</a>
-		<div id="search">
-			<form role="search" method="get" id="searchform" action="http://manaten.hatenablog.com/search" >
-				<div>
-					<input type="submit" value="">
-					<input type="text" value="" name="q" id="q" placeholder="検索..." />
-				</div>
-			</form>
-		</div>
-	</div>
+    <a class="rss" title="rss" href="http://manaten.net/feed">RSS</a>
+    <div id="search">
+      <form role="search" method="get" id="searchform" action="http://manaten.hatenablog.com/search" >
+        <div>
+          <input type="submit" value="">
+          <input type="text" value="" name="q" id="q" placeholder="検索..." />
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+  jQuery(function($) {
+    var sum = 0;
+    var categories = $('.hatena-module-category li a').map(function(_, a) {
+      var count = $(a).text().replace(/^[\s\S]*\((\d+)\)[^)]*$/, '$1') * 1;
+      sum += count;
+      return { count: count, $a: $(a) };
+    });
+    var mean = sum / categories.length;
+    var deviation = 0;
+    $.each(categories, function(_, category) {
+      deviation += Math.pow(category.count - mean, 2);
+    });
+    deviation = Math.sqrt(deviation) / categories.length;
+    $.each(categories, function(_, category) {
+      category.$a.text(category.$a.text().replace(/\((\d+)\)[^)]*$/, ''));
+      var score = Math.min(Math.max(Math.floor((category.count - mean) / deviation*100), 90), 150);
+      category.$a.css('font-size', score+'%');
+    });
+  });
+  </script>
 </header>

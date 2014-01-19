@@ -275,14 +275,11 @@ a.keyword {
   font-size: 80%;
   a {
     text-decoration: none;
-    border: solid 1px $main-border-color;
     @include border-radius(3px);
-    background-color: #EEE;
-    color: $thin-text-color;
+    background-color: $link-text-color;
+    color: #EEE;
     padding: 1px 4px;
-    &:hover {
-      color: $thin-link-text-color;
-    }
+    &:hover { @include opacity(0.5); }
   }
   &.no-categories {
     margin: 0;
@@ -435,7 +432,7 @@ a.keyword {
     overflow-x: auto;
     overflow-y: hidden;
     @include border-radius(5px);
-    padding: 2px 20px;
+    padding: 4px 20px;
     font-size: 14px;
     background-color: rgb(27, 36, 38);
     color: rgb(185, 189, 182);
@@ -649,8 +646,30 @@ a.keyword {
     a {
       text-decoration: none;
     }
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.1);
+    }
   }
 }
+
+.hatena-module-category {
+  ul.hatena-urllist {
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    li {
+      float: left;
+      padding: 4px;
+      border: none;
+      line-height: 1.5;
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  @include clearfix;
+}
+
 /* Search module */
 .hatena-module-search-box {
   .search-form {
