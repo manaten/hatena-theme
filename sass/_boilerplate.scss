@@ -56,7 +56,7 @@ html, body {
 }
 a {
   color: $link-text-color;
-  &:hover, &:visited {
+  &:hover {
     color: $thin-link-text-color;
   }
 }
@@ -255,6 +255,8 @@ a.keyword {
   margin: 0;
   line-height: 1.3;
   font-size: 160%;
+}
+h1.entry-title {
   border-bottom: 1px solid $main-border-color;
 }
 
@@ -272,8 +274,8 @@ a.keyword {
 /* カテゴリ */
 .categories {
   margin-top: 10px;
-  font-size: 80%;
   a {
+    font-size: 80%;
     text-decoration: none;
     @include border-radius(3px);
     background-color: $link-text-color;
@@ -635,7 +637,7 @@ a.keyword {
 /* urllist module
     リンク・最新記事・最近のコメント・月別アーカイブ・カテゴリモジュールは .hatena-urllist という共通の class が振られます
 */
-.hatena-urllist {
+.hatena-urllist, .hatena-bookmark ul {
   list-style: none;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
@@ -646,9 +648,6 @@ a.keyword {
     a {
       text-decoration: none;
     }
-    &:hover {
-      background-color: rgba(128, 128, 128, 0.1);
-    }
   }
 }
 
@@ -658,7 +657,7 @@ a.keyword {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     li {
-      float: left;
+      display: inline;
       padding: 4px;
       border: none;
       line-height: 1.5;
@@ -667,7 +666,6 @@ a.keyword {
       }
     }
   }
-  @include clearfix;
 }
 
 /* Search module */
@@ -805,16 +803,9 @@ a.keyword {
     }
   }
   .categories a {
-    color: #fff;
-    font-size: 70%;
-    background: #aaa;
-    padding: 3px 5px;
-    border-radius: 3px;
-    text-decoration: none;
     display: inline-block;
     *display: inline;
     *zoom: 1;
-    margin-right: 2px;
   }
 }
 

@@ -28,7 +28,7 @@
   jQuery(function($) {
     var sum = 0;
     var categories = $('.hatena-module-category li a').map(function(_, a) {
-      var count = $(a).text().replace(/^[\s\S]*\((\d+)\)[^)]*$/, '$1') * 1;
+      var count = +$(a).text().replace(/^[\s\S]*\((\d+)\)[^)]*$/, '$1');
       sum += count;
       return { count: count, $a: $(a) };
     });
@@ -39,9 +39,9 @@
     });
     deviation = Math.sqrt(deviation) / categories.length;
     $.each(categories, function(_, category) {
-      category.$a.text(category.$a.text().replace(/\((\d+)\)[^)]*$/, ''));
-      var score = Math.min(Math.max(Math.floor((category.count - mean) / deviation*100), 90), 150);
+      var score = Math.min(Math.max(Math.floor((category.count - mean) / deviation*100), 85), 180);
       category.$a.css('font-size', score+'%');
+      category.$a.text(category.$a.text().replace(/^[\s\n]*(.*)[\s\n]*\(\d+\)[^)]*$/, '$1'));
     });
   });
   </script>
